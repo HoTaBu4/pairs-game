@@ -1,0 +1,68 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+.container {
+
+}
+.name {}
+.game {}
+
+img{
+    width: 90px;
+}
+.box {
+    perspective: 1000px;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 660px;
+    height: 600px;
+    perspective: 1000px;
+    /* gap: 20px; */
+    border: 2px solid green;
+    border-radius: 20px ;
+    background-color: aquamarine;
+}
+.box__card{
+    position: relative;
+    transition: transform 0.5s;
+    height:calc(33.333% - 40px);
+    width: calc(25% - 40px);
+    transform-style: preserve-3d; 
+    margin:10px;
+}
+.box__card > img {
+   
+}
+
+.box__card__back {
+    background-color: blue;
+    border: 5px solid black;
+    border-radius: 20px;
+    
+}
+.box__card__front{
+    transform: rotateY(180deg);
+    border: 5px solid black;
+    background-color: aqua;
+    border-radius: 20px;
+}
+.box__card__back,.box__card__front{
+    box-sizing: border-box;
+    padding: 15px;
+}
+.box__card.flip{
+    transform: rotateY(180deg);
+}
+
+.box__card__back,.box__card__front{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
