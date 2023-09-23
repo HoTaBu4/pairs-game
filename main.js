@@ -1,51 +1,56 @@
+
 const main = document.querySelectorAll('.box__card')
+
 main.forEach(card => card.addEventListener('click',flipCard))
 let hasflippedCard = false;
 let lock = false;
 let first,second
-console.log(main);
 
-function flipCard(){
-    if(lock) return
-    this.classList.add('flip')
+    function flipCard(){
+        if(lock) return
+        if(this === first)return
+        this.classList.add('flip')
     
     if (!hasflippedCard) {
+        first = this 
         hasflippedCard = true;
-        first = this;
         return
-    } else {
-        hasflippedCard = false;
-        second = this ;
-        checkMatch();
-        lock = true
     }
-    return null
+
+        hasflippedCard = false;
+        second = this
+        lock = true
+
+        checkMatch();
     
 }
 function checkMatch(){
     let isMatch = first.dataset.color === second.dataset.color
-
+   
     isMatch ? disableCards() : unflipCards();
 }
 
 function disableCards(){
-    first.removeEventLister('click',flipCard);
-    second.removeEventLister('click',flipCard);
+    first.removeEventListener('click',flipCard);
+    second.removeEventListener('click',flipCard);
+   
     lock = false
 }
 
 function unflipCards(){
-    // lock = true;
     setTimeout(() => {
         first.classList.remove('flip');
         second.classList.remove('flip');
         lock = false;
-    }, 1500);
+    }, 1000);
     
 }
 
-function resetBoard(){
+(function reset(){
+    main.forEach((elem) => {
+        elem.style.order = (Math.random() * 12 ).toFixed(0)
+    })
     [hasflippedCard,lock] = [false,false];
     [first,second] = [null,null]
-}
+})()
 

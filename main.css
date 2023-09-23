@@ -22,10 +22,10 @@ img{
     width: 660px;
     height: 600px;
     perspective: 1000px;
-    /* gap: 20px; */
     border: 2px solid green;
     border-radius: 20px ;
-    background-color: aquamarine;
+    background-color: rgb(38, 91, 197);
+    padding: 5px;
 }
 .box__card{
     position: relative;
