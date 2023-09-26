@@ -1,12 +1,14 @@
 
 const main = document.querySelectorAll('.box__card')
+const resetButton = document.getElementById('reset')
 
 main.forEach(card => card.addEventListener('click',flipCard))
 let hasflippedCard = false;
 let lock = false;
 let first,second
 
-    function flipCard(){
+
+function flipCard(){
         if(lock) return
         if(this === first)return
         this.classList.add('flip')
@@ -33,7 +35,10 @@ function checkMatch(){
 function disableCards(){
     first.removeEventListener('click',flipCard);
     second.removeEventListener('click',flipCard);
-   
+        if (document.getElementsByClassName('flip').length === 12) {
+            resetButton.style.display = 'flex'
+        }
+        
     lock = false
 }
 
@@ -46,11 +51,23 @@ function unflipCards(){
     
 }
 
-(function reset(){
-    main.forEach((elem) => {
+let random  = (function() { 
+    let ranVariable =  () => main.forEach((elem) => {
         elem.style.order = (Math.random() * 12 ).toFixed(0)
     })
-    [hasflippedCard,lock] = [false,false];
-    [first,second] = [null,null]
+    return{
+       randomM : ranVariable()
+    }
 })()
+
+function reset(){
+    resetButton.style.display ='none';
+    [hasflippedCard,lock] = [false,false];
+    [first,second] = [null,null];
+
+    Array.from(main).forEach(elem => elem.classList.remove('flip'))
+    
+    random.randomM
+    
+}
 

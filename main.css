@@ -1,3 +1,43 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+.restart{
+    /* display: flex; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 180, 134, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.box__restart { 
+    
+    background-color: aqua;
+    width: 500px;
+    height: 400px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.box__restart__text {
+    text-align: center; 
+    font-size: 70px;
+}
+.box__restart__button {
+
+    background-color: aquamarine;
+    border-radius: 40px;
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+}
+/*===============================*/
 .main {
     display: flex;
     justify-content: center;
